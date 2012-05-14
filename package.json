@@ -1,0 +1,29 @@
+{ 
+  "name": "ignition",
+    "description": "A start and stop button for EC2 instances.",
+	"version": "0.0.1",
+  "licenses": [{
+    "type": "MIT",
+    "url": "https://github.com/B2MSolutions/node-ignition/raw/master/LICENSE"
+  }],
+  "author": { "name": "B2M Solutions", "url": "https://github.com/B2MSolutions" },
+  "contributors": [
+    { "name": "Steve Wood", "url":"https://github.com/sjwood" },
+    { "name": "James Bloomer", "url":"https://github.com/jamesbloomer" }
+  ],
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/B2MSolutions/node-ignition.git" 
+  },
+  "keywords": ["cloud computing", "ec2", "aws", "amazon"],
+	"dependencies": {
+        "express" : "2.5.9",
+        "jade" : "0.26.0",
+        "aws2js" : "0.6.15"
+  },
+  "devDependencies" : {
+	},
+  "main": "./lib/ignition",
+  "scripts": { "test": "vows test/*-test.js --spec" },
+  "engines": { "node": ">= 0.6.17" }
+}

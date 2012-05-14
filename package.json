@@ -22,8 +22,11 @@
         "aws2js" : "0.6.15"
   },
   "devDependencies" : {
+		"mocha" : "1.0.3",
+		"should" : "0.6.3",
+		"sinon" : "1.3.4"
 	},
-  "main": "./lib/ignition",
+  "main": "./lib/server",
   "scripts": { "test": "vows test/*-test.js --spec" },
   "engines": { "node": ">= 0.6.17" }
 }

@@ -2,13 +2,19 @@
 html
   head
     title Ignition!
+    link(rel="stylesheet", href="/css/bootstrap.min.css", type="text/css")
+    link(rel="stylesheet", href="/css/bootstrap-responsive.min.css", type="text/css")
   body
     h1 Instance #{instanceId} (#{elasticIp})
     form(action="/login/#{instanceId}/#{elasticIp}", method="post")
-        | Username:
-        input(type="text", name="user")
+        
+        p
+            | Username:
+            input(type="text", name="user") <br/>
+        
+        p
+            | Password:
+            input(type="password", name="password")<br/>
 
-        | Password:
-        input(type="password", name="password")
-
-        input(type="submit", value="Submit")
+        p
+            input(type="submit", value="Submit")

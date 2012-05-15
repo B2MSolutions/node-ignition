@@ -2,6 +2,8 @@
 html
   head
     title Ignition!
+    link(rel="stylesheet", href="/css/bootstrap.min.css", type="text/css")
+    link(rel="stylesheet", href="/css/bootstrap-responsive.min.css", type="text/css")
   body
     h1 Instance #{instanceId} (#{elasticIp}) is #{currentState}
     form(action="/#{action}/#{instanceId}/#{elasticIp}", method="post")

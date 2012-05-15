@@ -4,6 +4,6 @@ html
     title Ignition!
   body
     h1 Instance #{instanceId}
-    form(action="/start", method="post")
+    form(action="/#{action}", method="post")
         input(type="submit", value="#{action}")
     

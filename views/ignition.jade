@@ -3,7 +3,7 @@ html
   head
     title Ignition!
   body
-    h1 Instance #{instanceId}
-    form(action="/#{action}", method="post")
+    h1 Instance #{instanceId} is #{currentState}
+    form(action="/#{action}/#{instanceId}", method="post")
         input(type="submit", value="#{action}")
     

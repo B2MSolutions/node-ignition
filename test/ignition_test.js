@@ -69,4 +69,16 @@ describe('ignition', function(){
             }); 
         });
     });
+    
+    describe('#associateElasticIp()', function(){
+        it('should call AWS2JS request function with parameters AssociateAddress, the instanceId and the Elastic IP', function() {
+            var stub = sinon.stub(ignition.ec2, 'request').yields(null, null);
+            ignition.associateElasticIp('TestInstance', '0.0.0.0', function(error, response) {
+                should.not.exist(error);
+                stub.calledOnce.should.be.true;
+                stub.calledWith('AssociateAddress', { "InstanceId" : "TestInstance", "PublicIp" : "0.0.0.0" } ).should.be.true;
+                ignition.ec2.request.restore();
+            });
+        });
+    });
 });

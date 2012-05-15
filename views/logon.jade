@@ -1,0 +1,14 @@
+!!! 5
+html
+  head
+    title Ignition!
+  body
+    h1 Instance #{instanceId} (#{elasticIp})
+    form(action="/login/#{instanceId}/#{elasticIp}", method="post")
+        | Username:
+        input(type="text", name="user")
+
+        | Password:
+        input(type="password", name="password")
+
+        input(type="submit", value="Submit")

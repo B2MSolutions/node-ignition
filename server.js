@@ -2,7 +2,7 @@ var express = require('express'),
     fs = require('fs'),
     util = require('util');
 
-var ignition = require('../lib/ignition.js');
+var ignition = require('./lib/ignition.js');
 
 var app = express.createServer();
 

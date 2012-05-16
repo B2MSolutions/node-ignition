@@ -19,8 +19,7 @@
 	"dependencies": {
         "express" : "2.5.9",
         "jade" : "0.26.0",
-        "aws2js" : "0.6.15",
-        "passport" : "0.1.8"
+        "aws2js" : "0.6.15"
   },
   "devDependencies" : {
 		"mocha" : "1.0.3",

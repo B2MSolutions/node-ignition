@@ -4,8 +4,12 @@ html
     title Ignition!
     link(rel="stylesheet", href="/css/bootstrap.min.css", type="text/css")
     link(rel="stylesheet", href="/css/bootstrap-responsive.min.css", type="text/css")
+    // meta(http-equiv="refresh", content="5")
   body
-    h1 Instance #{instanceId} (#{elasticIp}) is #{currentState}
-    form(action="/#{action}/#{instanceId}/#{elasticIp}", method="post")
-        input(type="submit", value="#{action}")
+    p
+        <br/>
+    .container
+        .hero-unit
+            h1 #{instanceId} (#{elasticIp}) is #{currentState}
+            a.btn.btn-primary.btn-large(href='/#{action}/#{instanceId}/#{elasticIp}') #{action}
     

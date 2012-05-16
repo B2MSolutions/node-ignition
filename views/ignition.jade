@@ -4,6 +4,7 @@ html
     title Ignition!
     link(rel="stylesheet", href="/css/bootstrap.min.css", type="text/css")
     link(rel="stylesheet", href="/css/bootstrap-responsive.min.css", type="text/css")
+    link(rel="stylesheet", href="/css/ignition.css", type="text/css")
     // meta(http-equiv="refresh", content="5")
   body
     p
@@ -11,5 +12,6 @@ html
     .container
         .hero-unit
             h1 #{instanceId} (#{elasticIp}) is #{currentState}
-            a.btn.btn-primary.btn-large(href='/#{action}/#{instanceId}/#{elasticIp}') #{action}
+            - var c = (action === 'start' ? 'btn btn-success btn-large huge-button' : 'btn btn-danger btn-large huge-button')
+            a(class=c, href='/#{action}/#{instanceId}/#{elasticIp}') #{action}
     

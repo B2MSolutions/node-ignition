@@ -1,10 +1,25 @@
 var express = require('express'),
     fs = require('fs'),
-    util = require('util');
+    util = require('util'),
+    cluster = require('cluster'),
+    numCPUs = require('os').cpus().length;
 
 var ignition = require('./lib/ignition.js');
 
 var app = express.createServer();
+
+if (cluster.isMaster) {
+  for (var i = 0; i < numCPUs; i++) {
+    cluster.fork();
+  }
+
+  cluster.on('death', function(worker) {
+    console.log('worker ' + worker.pid + ' died, restarting new worker');
+    cluster.fork();
+  });
+} else {
+  app.listen(3000);
+}
 
 var logFile = fs.createWriteStream('./ignition.log', {flags: 'a'});
 
@@ -58,8 +73,6 @@ app.get('/stop/:instanceId/:elasticIp', function(req, res, next){
 		res.redirect('/show/' + req.params.instanceId + '/' + req.params.elasticIp);
 	});
 });
-
-app.listen(3000);
 
 function log(message) {
     var msg = util.format('\n%s : %s\n\n', new Date(Date.now()).toISOString(), message);

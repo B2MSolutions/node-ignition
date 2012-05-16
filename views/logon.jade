@@ -4,17 +4,14 @@ html
     title Ignition!
     link(rel="stylesheet", href="/css/bootstrap.min.css", type="text/css")
     link(rel="stylesheet", href="/css/bootstrap-responsive.min.css", type="text/css")
+    link(rel="stylesheet", href="/css/ignition.css", type="text/css")
   body
-    h1 Instance #{instanceId} (#{elasticIp})
-    form(action="/login/#{instanceId}/#{elasticIp}", method="post")
-        
-        p
-            | Username:
-            input(type="text", name="user") <br/>
-        
-        p
-            | Password:
-            input(type="password", name="password")<br/>
-
-        p
-            input(type="submit", value="Submit")
+    p
+        <br/>
+    .container
+        .hero-unit
+            h1 #{instanceId} (#{elasticIp})
+            form.well.form-inline.login(action="/login/#{instanceId}/#{elasticIp}", method="post")
+                input.input-small.login-item(type='text', placeholder='User', name="user")
+                input.input-small.login-item(type='password', placeholder='Password', name="password")
+                button.btn(type='submit') Sign in

@@ -1,4 +1,12 @@
 .huge-button {
     font-size: 65px;
     margin-top:50px;
+}
+    
+.login {
+    margin-top:50px;
+}
+
+.login-item {
+    margin-right:20px;
     }

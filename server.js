@@ -8,6 +8,8 @@ var ignition = require('./lib/ignition.js');
 
 var app = express.createServer();
 
+var port = 3000; // process.env.PORT; 
+
 if (cluster.isMaster) {
   for (var i = 0; i < numCPUs; i++) {
     cluster.fork();
@@ -18,7 +20,7 @@ if (cluster.isMaster) {
     cluster.fork();
   });
 } else {
-  app.listen(3000);
+  app.listen(port);
 }
 
 var logFile = fs.createWriteStream('./ignition.log', {flags: 'a'});
@@ -44,9 +46,16 @@ app.post('/login/:instanceId/:elasticIp', function(req, res) {
     res.redirect('/show/' + req.params.instanceId + '/' + req.params.elasticIp);
 });
 
-app.get('/show/:instanceId/:elasticIp', function(req, res){
+app.get('/show/:instanceId/:elasticIp?', function(req, res){
     ignition.getState(req.params.instanceId, function(error, response) {
-		res.render('ignition', {action : response.text, instanceId : req.params.instanceId, elasticIp : req.params.elasticIp, currentState : response.currentState});
+		res.render('ignition', 
+            {
+                action : response.text, 
+                instanceId : req.params.instanceId, 
+                elasticIp : req.params.elasticIp, 
+                currentState : response.currentState,
+                refresh : req.query["refresh"]
+            });
 	}); 
 });
 

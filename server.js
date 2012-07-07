@@ -54,7 +54,7 @@ app.get('/show/:instanceId/:elasticIp?', function(req, res){
                 instanceId : req.params.instanceId, 
                 elasticIp : req.params.elasticIp, 
                 currentState : response.currentState,
-                refresh : req.query["refresh"]
+                refresh : req.query.refresh
             });
 	}); 
 });
@@ -71,7 +71,7 @@ app.get('/start/:instanceId/:elasticIp', function(req, res, next){
                         poll();
                     }
                 });
-            }, 2000)
+            }, 2000);
         })();
 	});
 });
@@ -87,4 +87,4 @@ function log(message) {
     var msg = util.format('\n%s : %s\n\n', new Date(Date.now()).toISOString(), message);
     console.log(msg);
     logFile.write(msg);
-};
+}

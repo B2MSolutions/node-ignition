@@ -15,4 +15,5 @@ html
             h1 #{instanceId} (#{elasticIp}) is #{currentState}
             - var c = (action === 'start' ? 'btn btn-success btn-large huge-button' : 'btn btn-danger btn-large huge-button')
             a(class=c, href='/#{action}/#{instanceId}/#{elasticIp}') #{action}
-    
+        - if (action != 'start')
+            h3 Started by #{startedby}

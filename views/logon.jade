@@ -12,6 +12,6 @@ html
         .hero-unit
             h1 #{instanceId} (#{elasticIp})
             form.well.form-inline.login(action="/login/#{instanceId}/#{elasticIp}", method="post")
-                input.input-small.login-item(type='text', placeholder='User', name="user")
+                input.input-small.login-item(type='text', placeholder='User', name="username", autofocus="autofocus")
                 input.input-small.login-item(type='password', placeholder='Password', name="password")
                 button.btn(type='submit') Sign in

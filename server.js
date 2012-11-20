@@ -6,7 +6,7 @@ var ignition = require('./lib/ignition.js');
 
 var app = express.createServer();
 
-var port = 3000; // process.env.PORT;
+var port = process.env.PORT ? process.env.PORT : 3000,
 
 app.listen(port);
 

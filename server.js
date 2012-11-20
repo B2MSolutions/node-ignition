@@ -6,11 +6,12 @@ var ignition = require('./lib/ignition.js');
 
 var app = express.createServer();
 
-var port = process.env.PORT ? process.env.PORT : 3000,
+var port = process.env.PORT ? process.env.PORT : 3000;
 
 app.listen(port);
+console.log('listening on ' + port);
 
-var logFile = fs.createWriteStream('./ignition.log', {flags: 'a'});
+//var logFile = fs.createWriteStream('./ignition.log', {flags: 'a'});
 
 var started = [];
 
@@ -60,7 +61,7 @@ app.configure(function() {
     app.use(express.cookieParser());
     app.use(express.bodyParser());
     app.use(express.session({ secret: 'volcanoes at the end of the world' }));
-    app.use(express.logger({stream: logFile}));
+    //app.use(express.logger({stream: logFile}));
     app.use("/css", express.static(__dirname + '/css'));
 });
 
@@ -128,7 +129,7 @@ app.get('/stop/:instanceId/:elasticIp', ensureAuthenticated, function(req, res, 
 function log(message) {
     var msg = util.format('\n%s : %s\n\n', new Date(Date.now()).toISOString(), message);
     console.log(msg);
-    logFile.write(msg);
+    //logFile.write(msg);
 }
 
 function ensureAuthenticated(req, res, next) {

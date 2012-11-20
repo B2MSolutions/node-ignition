@@ -100,18 +100,6 @@ app.get('/show/:instanceId/:elasticIp?', ensureAuthenticated, function(req, res)
                 startedby: started[req.params.instanceId] ? started[req.params.instanceId] : 'unknown'
             });
     });
-
- //    ignition.getState(req.params.instanceId, function(error, response) {
-	// 	res.render('ignition',
- //            {
- //                action : response.text,
- //                instanceId : req.params.instanceId,
- //                elasticIp : req.params.elasticIp,
- //                currentState : response.currentState,
- //                refresh : req.query.refresh,
- //                startedby: started[req.params.instanceId]
- //            });
-	// });
 });
 
 app.get('/start/:instanceId/:elasticIp', ensureAuthenticated, function(req, res, next){

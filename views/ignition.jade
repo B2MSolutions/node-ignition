@@ -1,7 +1,7 @@
 !!! 5
 html
   head
-    title Ignition!
+    title #{name} - Ignition!
     link(rel="stylesheet", href="/css/bootstrap.min.css", type="text/css")
     link(rel="stylesheet", href="/css/bootstrap-responsive.min.css", type="text/css")
     link(rel="stylesheet", href="/css/ignition.css", type="text/css")
@@ -12,8 +12,11 @@ html
         <br/>
     .container
         .hero-unit
-            h1 #{instanceId} (#{elasticIp}) is #{currentState}
+            h1 #{name}
+            h2 Status: #{currentState} 
+            - if (action != 'start') 
+                h2 Started by: #{startedby}
             - var c = (action === 'start' ? 'btn btn-success btn-large huge-button' : 'btn btn-danger btn-large huge-button')
             a(class=c, href='/#{action}/#{instanceId}/#{elasticIp}') #{action}
-        - if (action != 'start')
-            h3 Started by #{startedby}
+
+        h5 (#{instanceId} #{elasticIp})

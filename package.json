@@ -23,7 +23,8 @@
         "libxml-to-js" : "0.3.10",
         "mime-magic" : "0.4.1",
         "passport" : "0.1.12",
-        "passport-local" : "0.1.6"
+        "passport-local" : "0.1.6",
+        "underscore" : "1.4.2"
     },
     "devDependencies" : {
 	    "mocha" : "1.x.x",

@@ -86,18 +86,31 @@ app.post('/login/:instanceId/:elasticIp', function(req, res) {
     }
 });
 
-app.get('/show/:instanceId/:elasticIp?', ensureAuthenticated, function(req, res){
-    ignition.getState(req.params.instanceId, function(error, response) {
-		res.render('ignition',
+app.get('/show/:instanceId/:elasticIp?', ensureAuthenticated, function(req, res) {
+    ignition.getInstanceDetails(req.params.instanceId, function(error, details) {
+        res.render('ignition',
             {
-                action : response.text,
+                action : details.action,
+                name: details.name,
                 instanceId : req.params.instanceId,
                 elasticIp : req.params.elasticIp,
-                currentState : response.currentState,
+                currentState : details.currentState,
                 refresh : req.query.refresh,
                 startedby: started[req.params.instanceId]
             });
-	});
+    });
+
+ //    ignition.getState(req.params.instanceId, function(error, response) {
+	// 	res.render('ignition',
+ //            {
+ //                action : response.text,
+ //                instanceId : req.params.instanceId,
+ //                elasticIp : req.params.elasticIp,
+ //                currentState : response.currentState,
+ //                refresh : req.query.refresh,
+ //                startedby: started[req.params.instanceId]
+ //            });
+	// });
 });
 
 app.get('/start/:instanceId/:elasticIp', ensureAuthenticated, function(req, res, next){

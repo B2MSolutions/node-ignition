@@ -20,6 +20,8 @@
         "express" : "2.x.x",
         "jade" : "0.x.x",
         "aws2js" : "0.x.x",
+        "libxml-to-js" : "0.3.10",
+        "mime-magic" : "0.4.1",
         "passport" : "0.1.12",
         "passport-local" : "0.1.6"
     },
@@ -30,5 +32,8 @@
 	},
     "main": "./server",
     "scripts": { "test": "mocha test/*" },
-    "engines": { "node": ">= 0.8.0" }
+    "engines": { 
+        "node": ">= 0.8.0",
+        "npm": "1.1.x"
+    }
 }

@@ -92,11 +92,12 @@ app.get('/show/:instanceId/:elasticIp?', ensureAuthenticated, function(req, res)
             {
                 action : details.action,
                 name: details.name,
+                launchtime: details.launchtime,
+                currentState : details.currentState,
                 instanceId : req.params.instanceId,
                 elasticIp : req.params.elasticIp,
-                currentState : details.currentState,
                 refresh : req.query.refresh,
-                startedby: started[req.params.instanceId]
+                startedby: started[req.params.instanceId] ? started[req.params.instanceId] : 'unknown'
             });
     });
 

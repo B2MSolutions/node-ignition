@@ -14,6 +14,7 @@ html
         .hero-unit
             h1 #{name}
             h2 Status: #{currentState} 
+            h2 Launched: #{launchtime} 
             - if (action != 'start') 
                 h2 Started by: #{startedby}
             - var c = (action === 'start' ? 'btn btn-success btn-large huge-button' : 'btn btn-danger btn-large huge-button')

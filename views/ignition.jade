@@ -6,18 +6,22 @@ html
     link(rel="stylesheet", href="/css/bootstrap-responsive.min.css", type="text/css")
     link(rel="stylesheet", href="/css/ignition.css", type="text/css")
     - if (refresh != "off")
-        meta(http-equiv="refresh", content="5")
+        meta(http-equiv="refresh", content="10")
   body
     p
         <br/>
     .container
         .hero-unit
             h1 #{name}
-            h2 Instance Status: #{currentState} 
+            h2 Instance: 
+                span(class="#{currentState}") #{currentState} 
+            h2 Server Status: 
+                span(class="#{health}") #{health} 
             - if (action != 'start') 
-                h2 Server Status: #{health} 
-                h2 Started by: #{startedby}
-            h2 Last Launched: #{launchtime}
+                h2 Started by: 
+                   span(class="unknown") #{startedby}
+            h2 Last Launched: 
+                span(class="unknown") #{launchtime}
             - var c = (action === 'start' ? 'btn btn-success btn-large huge-button' : 'btn btn-danger btn-large huge-button')
             a(class=c, href='/#{action}/#{instanceId}/#{elasticIp}') #{action}
 

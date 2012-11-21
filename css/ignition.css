@@ -10,3 +10,23 @@
 .login-item {
     margin-right:20px;
     }
+
+.stopped {
+	color: #B94A48;
+}
+
+.pending {
+	color: #F89406;
+}
+
+.stopping {
+	color: #F89406;
+}
+
+.running {
+	color: #468847;
+}
+
+.unknown {
+	color: #3A87AD;
+}

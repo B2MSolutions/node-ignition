@@ -87,7 +87,7 @@ app.post('/login/:instanceId/:elasticIp', function(req, res) {
 });
 
 app.get('/show/:instanceId/:elasticIp?', ensureAuthenticated, function(req, res) {
-    ignition.getInstanceDetails(req.params.instanceId, function(error, details) {
+    ignition.getInstanceDetails(req.params.instanceId, req.params.elasticIp, function(error, details) {
         res.render('ignition',
             {
                 action : details.action,

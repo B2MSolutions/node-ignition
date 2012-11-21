@@ -25,7 +25,9 @@
         "moment" : "1.7.2",
         "passport" : "0.1.12",
         "passport-local" : "0.1.6",
-        "underscore" : "1.4.2"
+        "underscore" : "1.4.2",
+        "winston" : "0.6.2",
+        "winston-mongodb" : "0.4.0"
     },
     "devDependencies" : {
 	    "mocha" : "1.x.x",

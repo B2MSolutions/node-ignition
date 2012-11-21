@@ -109,7 +109,7 @@ describe('ignition', function(){
         it('should return unknowns on error', function(callback) {
             ignition.describeInstances.yields('ERR');
             ignition.describeHealth.yields(null, 'HEALTH');
-            ignition.getInstanceDetails('A', function(e, d) {
+            ignition.getInstanceDetails('A', 'B', function(e, d) {
                 should.not.exist(e);
                 should.exist(d);
                 d.should.eql({ currentState: "unknown", action: "unknown", name: "unknown", launchtime: 'unknown', health: 'unknown' });
@@ -119,7 +119,7 @@ describe('ignition', function(){
         it('should return currentState when valid', function(callback) {
             ignition.describeInstances.yields(null, validDescription);
             ignition.describeHealth.yields(null, 'HEALTH');
-            ignition.getInstanceDetails('A', function(e, d) {
+            ignition.getInstanceDetails('A', 'B', function(e, d) {
                 should.not.exist(e);
                 should.exist(d);
                 should.exist(d.currentState);
@@ -130,7 +130,7 @@ describe('ignition', function(){
         it('should return action when valid', function(callback) {
             ignition.describeInstances.yields(null, validDescription);
             ignition.describeHealth.yields(null, 'HEALTH');
-            ignition.getInstanceDetails('A', function(e, d) {
+            ignition.getInstanceDetails('A', 'B', function(e, d) {
                 should.not.exist(e);
                 should.exist(d);
                 should.exist(d.action);
@@ -141,7 +141,7 @@ describe('ignition', function(){
         it('should return name when valid', function(callback) {
             ignition.describeInstances.yields(null, validDescription);
             ignition.describeHealth.yields(null, 'HEALTH');
-            ignition.getInstanceDetails('A', function(e, d) {
+            ignition.getInstanceDetails('A', 'B', function(e, d) {
                 should.not.exist(e);
                 should.exist(d);
                 should.exist(d.name);
@@ -152,7 +152,7 @@ describe('ignition', function(){
         it('should return launchtime when valid', function(callback) {
             ignition.describeInstances.yields(null, validDescription);
             ignition.describeHealth.yields(null, 'HEALTH');
-            ignition.getInstanceDetails('A', function(e, d) {
+            ignition.getInstanceDetails('A', 'B', function(e, d) {
                 should.not.exist(e);
                 should.exist(d);
                 should.exist(d.launchtime);
@@ -163,7 +163,7 @@ describe('ignition', function(){
          it('should return health when valid', function(callback) {
             ignition.describeInstances.yields(null, validDescription);
             ignition.describeHealth.yields(null, 'HEALTH');
-            ignition.getInstanceDetails('A', function(e, d) {
+            ignition.getInstanceDetails('A', 'B', function(e, d) {
                 should.not.exist(e);
                 should.exist(d);
                 should.exist(d.health);
@@ -171,25 +171,5 @@ describe('ignition', function(){
                 callback();
             })
         });
-    });
-
-    describe('#ignition.describeHealth', function() {
-        it('should', function(callback) {
-            this.timeout(10000);
-            var req = http.get("http://google.com/", function(res) {
-                console.log("Got response: " + res.statusCode);
-                callback();
-            }).on('error', function(e) {
-                console.log("Got error: " + e.message);
-                callback();
-            });
-
-            req.on('socket', function (socket) {
-                socket.setTimeout(5000);  
-                socket.on('timeout', function() {
-                    req.abort();
-                });
-            });
-        });
-    });
+    });    
 });

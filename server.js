@@ -93,6 +93,7 @@ app.get('/show/:instanceId/:elasticIp?', ensureAuthenticated, function(req, res)
                 action : details.action,
                 name: details.name,
                 launchtime: details.launchtime,
+                health: details.health,
                 currentState : details.currentState,
                 instanceId : req.params.instanceId,
                 elasticIp : req.params.elasticIp,

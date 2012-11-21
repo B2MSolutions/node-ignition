@@ -13,10 +13,11 @@ html
     .container
         .hero-unit
             h1 #{name}
-            h2 Status: #{currentState} 
-            h2 Launched: #{launchtime} 
+            h2 Instance Status: #{currentState} 
             - if (action != 'start') 
+                h2 Server Status: #{health} 
                 h2 Started by: #{startedby}
+            h2 Last Launched: #{launchtime}
             - var c = (action === 'start' ? 'btn btn-success btn-large huge-button' : 'btn btn-danger btn-large huge-button')
             a(class=c, href='/#{action}/#{instanceId}/#{elasticIp}') #{action}
 

@@ -108,7 +108,7 @@ describe('ignition', function(){
             ignition.getInstanceDetails('A', function(e, d) {
                 should.not.exist(e);
                 should.exist(d);
-                d.should.eql({ currentState: "unknown", action: "unknown", name: "unknown", launchtime: 'unknown' });
+                d.should.eql({ currentState: "unknown", action: "unknown", name: "unknown", launchtime: 'unknown', health: 'unknown' });
                 callback();
             })
         });
@@ -149,6 +149,16 @@ describe('ignition', function(){
                 should.exist(d);
                 should.exist(d.launchtime);
                 d.launchtime.should.equal("unknown");
+                callback();
+            })
+        });
+         it('should return health when valid', function(callback) {
+            ignition.describeInstances.yields(null, validDescription);
+            ignition.getInstanceDetails('A', function(e, d) {
+                should.not.exist(e);
+                should.exist(d);
+                should.exist(d.health);
+                d.health.should.equal("unknown");
                 callback();
             })
         });
